@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Coupon Form
+    link(rel='stylesheet', href='../static/css/styleContact.css')
+  body
+    h1 Details
+    .container
+      .cta-form
+        h2 Fill out the form!
+      form.form(action="/contact", method="post", class="myForm")
+        input#name.form__input(type='text',name="name", placeholder='Name')
+        label.form__label(for='name') Name
+        input#name.form__input(type='text',name="Phone", placeholder='Phone no.')
+        label.form__label(for='Phone no.') Phone no.
+        input#name.form__input(type='email',name="email", placeholder='Email')
+        label.form__label(for='email') Email
+        input#coupon.form__input(type='text',name="couponName", placeholder='Coupon Name')
+        label.form__label(for='couponName') Coupon Name
+        input#detail.form__input(type='text',name="details", placeholder='detail')
+        label.form__label(for='details') Coupon Details
+        input#detail.form__input(type='text',name="Expiry", placeholder='Expiry')
+        label.form__label(for='Expiry') Expiry date of coupon
+        input#detail.form__input(type='file',name="imgOfCoupon", placeholder='Image of coupon')
+        label.form__label(for='CouponImg') Coupon Image
+        input#submit.submit-btn(type='submit', value='Submit')

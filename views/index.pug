@@ -1,0 +1,254 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Coupon Space
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css')
+    link(rel='stylesheet', href='../static/css/style.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css')
+    // footer
+    // <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    link(rel='stylesheet', href='../static/css/bootstrap.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css')
+  body(translate='no')
+    // Nav
+    nav#header.w-full.z-30.top-0.py-1
+      .w-full.container.mx-auto.flex.flex-wrap.items-center.justify-between.mt-0.px-6.py-3
+        label.cursor-pointer.block(for='menu-toggle', class='md:hidden')
+          svg.fill-current.text-gray-900(xmlns='http://www.w3.org/2000/svg', width='20', height='20', viewBox='0 0 20 20')
+            title menu
+            path(d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z')
+        input#menu-toggle.hidden(type='checkbox')
+        #menu.hidden.w-full.order-3(class='md:flex md:items-center md:w-auto md:order-1')
+          nav
+            ul.items-center.justify-between.text-base.text-gray-700.pt-4(class='md:flex md:pt-0')
+              li
+                a.inline-block.no-underline.py-2.px-4(class='hover:text-black hover:underline', href='/contact') Add coupon
+              li
+                a.inline-block.no-underline.py-2.px-4(class='hover:text-black hover:underline', href='#') About
+        .order-1(class='md:order-2')
+          a.flex.items-center.tracking-wide.no-underline.font-bold.text-xl(class='hover:no-underline', href='#')
+            | CouponSpace
+    .carousel.relative.container.mx-auto(style='max-width:1600px;')
+      .carousel-inner.relative.overflow-hidden.w-full
+        // Slide 1
+        input#carousel-1.carousel-open(type='radio', name='carousel', aria-hidden='true', hidden='', checked='checked')
+        .carousel-item.absolute.opacity-0(style='height:60vh;')
+          .block.h-full.w-full.mx-auto.flex.pt-6.bg-cover.bg-right(class='md:pt-0 md:items-center', style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1099&q=80');")
+            .container.mx-auto
+              .flex.flex-col.w-full.items-center.px-6.tracking-wide(class='lg:w-1/2 md:ml-16 md:items-start')
+                p.font-bold.text-2xl.my-4 Stripy Zig Zag Jigsaw Pillow and Duvet Set
+                a.text-xl.inline-block.no-underline.border-b.border-gray-600.leading-relaxed(class='hover:text-black hover:border-black', href='#') View Coupon
+        label.prev.control-1.w-10.h-10.ml-2.absolute.cursor-pointer.hidden.text-3xl.font-bold.text-black.rounded-full.bg-white.leading-tight.text-center.z-10.inset-y-0.left-0.my-auto(for='carousel-3', class='md:ml-10 hover:text-white hover:bg-gray-900') &lsaquo;
+        label.next.control-1.w-10.h-10.mr-2.absolute.cursor-pointer.hidden.text-3xl.font-bold.text-black.rounded-full.bg-white.leading-tight.text-center.z-10.inset-y-0.right-0.my-auto(for='carousel-2', class='md:mr-10 hover:text-white hover:bg-gray-900') &rsaquo;
+        // Slide 2
+        input#carousel-2.carousel-open(type='radio', name='carousel', aria-hidden='true', hidden='')
+        .carousel-item.absolute.opacity-0.bg-cover.bg-right(style='height:60vh;')
+          .block.h-full.w-full.mx-auto.flex.pt-6.bg-cover.bg-right(class='md:pt-0 md:items-center', style="background-image: url('https://images.unsplash.com/photo-1522040806052-b0aa2b039f00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80');")
+            .container.mx-auto
+              .flex.flex-col.w-full.items-center.px-6.tracking-wide(class='lg:w-1/2 md:ml-16 md:items-start')
+                p.font-bold.text-2xl.my-4 Real Bamboo Wall Clock
+                a.text-xl.inline-block.no-underline.border-b.border-gray-600.leading-relaxed(class='hover:text-black hover:border-black', href='#') View Coupon
+        label.prev.control-2.w-10.h-10.ml-2.absolute.cursor-pointer.hidden.text-3xl.font-bold.text-black.rounded-full.bg-white.leading-tight.text-center.z-10.inset-y-0.left-0.my-auto(for='carousel-1', class='md:ml-10 hover:text-white hover:bg-gray-900') &lsaquo;
+        label.next.control-2.w-10.h-10.mr-2.absolute.cursor-pointer.hidden.text-3xl.font-bold.text-black.rounded-full.bg-white.leading-tight.text-center.z-10.inset-y-0.right-0.my-auto(for='carousel-3', class='md:mr-10 hover:text-white hover:bg-gray-900') &rsaquo;
+        // Slide 3
+        input#carousel-3.carousel-open(type='radio', name='carousel', aria-hidden='true', hidden='')
+        .carousel-item.absolute.opacity-0(style='height:60vh;')
+          .block.h-full.w-full.mx-auto.flex.pt-6.bg-cover.bg-bottom(class='md:pt-0 md:items-center', style="background-image: url('https://images.unsplash.com/photo-1652819804299-eea887780ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1436&q=80');")
+            .container.mx-auto
+              .flex.flex-col.w-full.items-center.px-6.tracking-wide(class='lg:w-1/2 md:ml-16 md:items-start')
+                p.font-bold.text-2xl.my-4 Brown and blue hardbound book
+                a.text-xl.inline-block.no-underline.border-b.border-gray-600.leading-relaxed(class='hover:text-black hover:border-black', href='#') View Coupon
+        label.prev.control-3.w-10.h-10.ml-2.absolute.cursor-pointer.hidden.text-3xl.font-bold.text-black.rounded-full.bg-white.leading-tight.text-center.z-10.inset-y-0.left-0.my-auto(for='carousel-2', class='md:ml-10 hover:text-white hover:bg-gray-900') &lsaquo;
+        label.next.control-3.w-10.h-10.mr-2.absolute.cursor-pointer.hidden.text-3xl.font-bold.text-black.rounded-full.bg-white.leading-tight.text-center.z-10.inset-y-0.right-0.my-auto(for='carousel-1', class='md:mr-10 hover:text-white hover:bg-gray-900') &rsaquo;
+        // Add additional indicators for each slide
+        ol.carousel-indicators
+          li.inline-block.mr-3
+            label.carousel-bullet.cursor-pointer.block.text-4xl.text-gray-400(for='carousel-1', class='hover:text-gray-900') &bull;
+          li.inline-block.mr-3
+            label.carousel-bullet.cursor-pointer.block.text-4xl.text-gray-400(for='carousel-2', class='hover:text-gray-900') &bull;
+          li.inline-block.mr-3
+            label.carousel-bullet.cursor-pointer.block.text-4xl.text-gray-400(for='carousel-3', class='hover:text-gray-900') &bull;
+    section.bg-white.py-8
+      .container.mx-auto.flex.items-center.flex-wrap.pt-4.pb-12
+        nav#store.w-full.z-30.top-0.px-6.py-1
+          .w-full.container.mx-auto.flex.flex-wrap.items-center.justify-between.mt-0.px-2.py-3
+            a.uppercase.tracking-wide.no-underline.font-bold.text-gray-800.text-xl(class='hover:no-underline', href='#')
+              | Store
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 10% OFF
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.unsplash.com/photo-1567928513899-997d98489fbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 15% OFF
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 20% OFF
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.unsplash.com/photo-1664915896817-12a978b85ed4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=924&q=80')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 15% OFF
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1420&q=80')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 20% OFF
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.pexels.com/photos/821652/pexels-photo-821652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 25% OFF
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.unsplash.com/photo-1539213465191-6046fe072ade?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 30% OFF
+        .w-full.p-6.flex.flex-col.hovercolor(class='md:w-1/3 xl:w-1/4')
+          a(href='#')
+            img(class='hover:grow hover:shadow-lg', src='https://images.unsplash.com/photo-1585398998744-cae0cc1b8140?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80')
+            .pt-3.flex.items-center.justify-between
+              p Product Name
+              svg.h-6.w-6.fill-current.text-gray-500(class='hover:text-black', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                path(d='M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z')
+            p.pt-1.text-gray-900 35% OFF
+    section.slider
+      div
+        img(src='../static/images/1.png')
+        .desc
+          h2 Apple
+          p 20% OFF
+          a.btn(href='#') Get Now
+      div
+        img(src='../static/images/2.png')
+        .desc
+          h2 RealMe
+          p 10% OFF
+          a.btn(href='#') Get Now
+      div
+        img(src='../static/images/3.png')
+        .desc
+          h2 MI
+          p 20% OFF
+          a.btn(href='#') Get Now
+      div
+        img(src='../static/images/1.png')
+        .desc
+          h2 Apple
+          p 15% OFF
+          a.btn(href='#') Get Now
+      div
+        img(src='../static/images/2.png')
+        .desc
+          h2 RealMe
+          p 10% OFF
+          a.btn(href='#') Get Now
+      div
+        img(src='../static/images/3.png')
+        .desc
+          h2 MI
+          p 15%
+          a.btn(href='#') Get Now
+    footer.footer
+      .container
+        .newsletter
+          h2 Subscribe Our Newsletter
+          .form
+            input.form-control(placeholder='Email here')
+            button.btn Submit
+        .row
+          .col-md-6.col-lg-4
+            .footer-about
+              h3 About Us
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu lectus a leo tristique dictum nec non quam. Suspendisse convallis, tortor eu placerat rhoncus, lorem quam iaculis felis, sed eleifend lacus neque id eros. Integer convallis volutpat neque
+          .col-md-6.col-lg-8
+            .col-md-6.col-lg-4
+              .footer-contact
+                h3 Get In Touch
+                p
+                  i.fa.fa-map-marker-alt
+                  | 123 Street,India
+                p
+                  i.fa.fa-phone-alt
+                  | +91 1234567890
+                p
+                  i.fa.fa-envelope
+                  a.__cf_email__(href='/cdn-cgi/l/email-protection', data-cfemail='365f58505976534e575b465a531855595b') [email&nbsp;protected]
+                .footer-social
+                  a(href='')
+                    i.fab.fa-twitter
+                  a(href='')
+                    i.fab.fa-facebook-f
+                  a(href='')
+                    i.fab.fa-youtube
+                  a(href='')
+                    i.fab.fa-instagram
+                  a(href='')
+                    i.fab.fa-linkedin-in
+      .container.footer-menu
+        .f-menu
+          a(href='') Terms of use
+          a(href='') Privacy policy
+          a(href='') Cookies
+          a(href='') Help
+          a(href='') FQAs
+      .container.copyright
+        .row
+          .col-md-6
+            p
+              | &copy; 
+              a(href='#') CouponSpace
+              |  | All Right Reserved.
+    // Footer End
+    script(data-cfasync='false', src='/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')
+    script(src='https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js')
+    script(src='https://code.jquery.com/jquery-1.11.0.min.js')
+    script(src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js')
+    script#rendered-js.
+      function createSlick() {
+      $(".slider").not('.slick-initialized').slick({
+      centerMode: true,
+      autoplay: true,
+      dots: true,
+      slidesToShow: 3,
+      responsive: [{
+      breakpoint: 768,
+      settings: {
+      dots: false,
+      arrows: false,
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1 } }] });
+      }
+      createSlick();
+      //Will not throw error, even if called multiple times.
+      $(window).on('resize', createSlick);
+    script(src='https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js')

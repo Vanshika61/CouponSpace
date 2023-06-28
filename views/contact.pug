@@ -3,25 +3,28 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title Coupon Form
-    link(rel='stylesheet', href='../static/css/styleContact.css')
+    link(rel='stylesheet' href='../static/css/styleContact.css')
+    link(rel='stylesheet' href='../static/css/bootstrap.css')
   body
-    h1 Details
+    .alert.alert-success.margin(role='alert')
+      | #{alert}
+    h1.margin Details
     .container
       .cta-form
         h2 Fill out the form!
       form.form(action="/contact" method="post")
-        input#name.form__input(type='text' name="name" placeholder='Name')
-        label.form__label(for='name') Name
-        input#name.form__input(type='text' name="phone" placeholder='Phone no.')
+        input#nameField.form__input(type='text' name="name" placeholder='Name')
+        label.form__label(for='nameField') Name
+        input#phone.form__input(type='number' name="phone" placeholder='Phone no.')
         label.form__label(for='phone') Phone no.
-        input#name.form__input(type='email' name="email" placeholder='Email')
+        input#email.form__input(type='email' name="email" placeholder='Email')
         label.form__label(for='email') Email
         input#coupon.form__input(type='text' name="couponName" placeholder='Coupon Name')
         label.form__label(for='couponName') Coupon Name
-        input#detail.form__input(type='text' name="details" placeholder='detail')
-        label.form__label(for='details') Coupon Details
-        input#detail.form__input(type='text' name="expiry" placeholder='Expiry')
+        input#detailField.form__input(type='text' name="details" placeholder='detail')
+        label.form__label(for='detailField') Coupon Details
+        input#expiry.form__input(type='date' name="expiry" placeholder='Expiry')
         label.form__label(for='expiry') Expiry date of coupon
-        input#detail.form__input(type='file' name="imgOfCoupon" placeholder='Image of coupon')
-        label.form__label(for='couponImg') Coupon Image
+        //- input#couponImg.form__input(type='file' name="couponImg" placeholder='Image of coupon')
+        //- label.form__label(for='couponImg') Coupon Image
         input#submit.submit-btn(type='submit' value='Submit')

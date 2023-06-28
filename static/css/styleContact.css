@@ -157,3 +157,7 @@ html .form__label {
   text-align: center;
   width: 100%;
 }
+
+.margin{
+  margin: auto;
+}

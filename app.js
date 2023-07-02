@@ -39,7 +39,7 @@ app.set('views', path.join(__dirname, 'views')); // Set the views directory
 
 
 // ENDPOINTS CONFIGURATION
-app.get('/', async (req, res) => {
+app.get('/index', async (req, res) => {
   try {
     const data = await Contact.find({}).exec();
     res.render('index', { data });
@@ -59,7 +59,7 @@ app.get('/login', (req, res) => {
   res.status(200).render('login', params);
 });
 
-app.get('/register', (req, res) => {
+app.get('/', (req, res) => {
   const params = {};
   res.status(200).render('register', params);
 });
@@ -90,8 +90,8 @@ app.post('/register', async (req, res) => {
     // Save the user to the database
     await newUser.save();
     // Redirect the user back to login page with success message
-    var params = { alert: 'User registered successfully!' };
-    return res.status(200).redirect('login', params);
+    // var params = { alert: 'User registered successfully!' };
+    return res.status(200).redirect('/index');
   } catch (error) {
     // console.error('Error registering user:', error);
     var params = { alert: 'Internal server error' };
@@ -126,7 +126,7 @@ app.post('/login', async (req, res) => {
     // Password is valid, so the user is authenticated
     // we can create a session or generate a token for authentication here
     // For simplicity, we'll just return a success message
-    return res.status(200).redirect('/');
+    return res.status(200).redirect('/index');
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal server error');
@@ -161,15 +161,15 @@ app.get('/api/data', (req, res) => {
     });
 });
 
-app.get('/', async (req, res) => {
-  try {
-    const data = await Contact.find({}).exec();
-    res.render('index', { data });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Internal Server Error');
-  }
-});
+// app.get('/', async (req, res) => {
+//   try {
+//     const data = await Contact.find({}).exec();
+//     res.render('index', { data });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
 
 
 // START THE SERVER

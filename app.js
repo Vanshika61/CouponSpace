@@ -10,6 +10,8 @@ const mongoose = require('mongoose');
 const exp = require('constants');
 const User = require('./signup');
 const Contact = require('./detailsdb');
+const session = require('express-session');
+
 
 
 // Connect to MongoDB
@@ -29,8 +31,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/couponSpace', {
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
+
 app.use('/static', express.static('static')); // For serving static files
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // PUG SPECIFIC CONFIGURATION
 app.set('view engine', 'pug'); // Set the template engine as pug
@@ -91,7 +101,7 @@ app.post('/register', async (req, res) => {
     await newUser.save();
     // Redirect the user back to login page with success message
     // var params = { alert: 'User registered successfully!' };
-    return res.status(200).redirect('/index');
+    return res.status(200).redirect('/login');
   } catch (error) {
     // console.error('Error registering user:', error);
     var params = { alert: 'Internal server error' };
@@ -131,6 +141,18 @@ app.post('/login', async (req, res) => {
     console.error(error);
     return res.status(500).send('Internal server error');
   }
+});
+
+// Route for logout
+app.get('/logout', (req, res) => {
+  // Clear the session
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error clearing session:', err);
+    }
+    // Redirect the user to the login page
+    res.redirect('/login');
+  });
 });
 
 

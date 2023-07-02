@@ -4,35 +4,39 @@ const app = express();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const pug = require('pug');
+const bcrypt = require('bcrypt');
 const port = 8000;
-
 const mongoose = require('mongoose');
+const exp = require('constants');
+const User = require('./signup');
+const Contact = require('./detailsdb');
 
-main().catch((err) => console.log(err));
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/couponSpace');
-}
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/couponSpace', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 
-// Define mongoose schema
-const contactSchema = new mongoose.Schema({
-  name: String,
-  phone: Number,
-  email: String,
-  couponName: String,
-  details: String,
-  expiry: Date
-});
-
-const Contact = mongoose.model('Contact', contactSchema);
 
 // EXPRESS SPECIFIC CONFIGURATION
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use('/static', express.static('static')); // For serving static files
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // PUG SPECIFIC CONFIGURATION
 app.set('view engine', 'pug'); // Set the template engine as pug
 app.set('views', path.join(__dirname, 'views')); // Set the views directory
+
+
 
 // ENDPOINTS CONFIGURATION
 app.get('/', async (req, res) => {
@@ -50,6 +54,87 @@ app.get('/contact', (req, res) => {
   res.status(200).render('contact', params);
 });
 
+app.get('/login', (req, res) => {
+  const params = {};
+  res.status(200).render('login', params);
+});
+
+app.get('/register', (req, res) => {
+  const params = {};
+  res.status(200).render('register', params);
+});
+
+
+// Route for registering a user
+app.post('/register', async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      var params = { alert: 'User already exists' };
+      return res.status(409).render('register', params);
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new user
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword,
+    });
+
+    // Save the user to the database
+    await newUser.save();
+    // Redirect the user back to login page with success message
+    var params = { alert: 'User registered successfully!' };
+    return res.status(200).redirect('login', params);
+  } catch (error) {
+    // console.error('Error registering user:', error);
+    var params = { alert: 'Internal server error' };
+    return res.status(500).render('register', params);
+  }
+});
+
+
+// Login route
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Find the user in the database based on the email
+    const user = await User.findOne({ email });
+
+    // If the user is not found, return an error
+    if (!user) {
+      var params = { alert: 'User not found' };
+      return res.status(404).send('login', params);
+    }
+
+    // Compare the provided password with the hashed password stored in the database
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    // If the passwords do not match, return an error
+    if (!isPasswordValid) {
+      var params = { alert: 'Invalid password' };
+      return res.status(401).render('login', params);
+    }
+
+    // Password is valid, so the user is authenticated
+    // we can create a session or generate a token for authentication here
+    // For simplicity, we'll just return a success message
+    return res.status(200).redirect('/');
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Internal server error');
+  }
+});
+
+
+// Route for adding the contact details
 app.post('/contact', (req, res) => {
   var params = { alert: 'Success, details have been submitted successfully...' };
   var myData = new Contact(req.body);
@@ -85,6 +170,7 @@ app.get('/', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 // START THE SERVER
 app.listen(port, () => {

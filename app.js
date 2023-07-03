@@ -101,7 +101,7 @@ app.post('/register', async (req, res) => {
     await newUser.save();
     // Redirect the user back to login page with success message
     // var params = { alert: 'User registered successfully!' };
-    return res.status(200).redirect('/login');
+    return res.status(200).redirect('/index');
   } catch (error) {
     // console.error('Error registering user:', error);
     var params = { alert: 'Internal server error' };
@@ -183,7 +183,7 @@ app.get('/api/data', (req, res) => {
     });
 });
 
-// app.get('/', async (req, res) => {
+// app.get('/index', async (req, res) => {
 //   try {
 //     const data = await Contact.find({}).exec();
 //     res.render('index', { data });
